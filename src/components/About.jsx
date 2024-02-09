@@ -1,18 +1,10 @@
-import John from "../img/john.png";
-import Swin from "../img/swinburne.png";
-import Telstra from '../img/telstra.png'
-import Tru from '../img/tru.jpg';
-import Question from '../img/Question.png'
-import { useState, useEffect, useRef } from "react"
-import { createRoot } from 'react-dom/client';  // Corrected import statement
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Scene } from "three";
+import { useState, useEffect, useRef } from "react";
+import { Canvas, useLoader } from '@react-three/fiber';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 const Item = ({ path }) => {
     const [animationFrame, setAnimationFrame] = useState(0);
     const ref = useRef();
     const useNum = useRef(-1)
-    const [rotationDirection, setRotationDirection] = useState(-1); // 1 for clockwise, -1 for counterclockwise
     // Use the loader callback to handle the loaded model
     const telstra = useLoader(GLTFLoader, path);
 
@@ -61,6 +53,7 @@ const Item = ({ path }) => {
 
         // Cleanup function to cancel animation frame on component unmount
         return () => cancelAnimationFrame(animationFrame);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return <group ref={ref} />;

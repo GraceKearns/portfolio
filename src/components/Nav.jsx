@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react";
 import { Canvas, useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import LinkedIn from '../img/LinkedIn.png'
-import Github from '../img/github.png'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import LinkedIn from '../img/LinkedIn.png';
+import Github from '../img/github.png';
 function Thing() {
     const ref = useRef();
     const backend = useLoader(GLTFLoader, '/gltf/duck.glb');
@@ -34,6 +34,7 @@ function Thing() {
                 rotateObjects()
             }
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [backend.scene, ref, animationFinished]);
     const rotateObjects = () => {
         if (ref.current && backend.scene) {
@@ -73,6 +74,7 @@ function Thing() {
     useEffect(() => {
         setAnimationFrame(requestAnimationFrame(fadeInAndMoveObjects));
         return () => cancelAnimationFrame(animationFrame);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fadeInAndMoveObjects]);
 
     return <group ref={ref} />;

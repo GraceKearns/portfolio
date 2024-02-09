@@ -1,65 +1,32 @@
-import HTML from '../img/html.png'
-import CSS from '../img/css.png'
-import Javascript from '../img/javascrit.png'
 import Reacted from '../img/react.png'
 import Nextjs from '../img/nextjs.png'
-import Vue from '../img/vue.png'
 import MaterialUI from '../img/materialui.png'
 import Tailwind from '../img/tailwind.png'
 import Node from '../img/node.png'
-import NestJs from '../img/nestjs.png'
-import Nginx from '../img/nginx.png'
 import PHP from '../img/php.png'
-import Swagger from '../img/swagger.png'
 import Laravel from '../img/laravel.png'
-import Mongodb from '../img/mongodb.png'
-import RabbitMq from '../img/rabbitmq.png'
-import Kafka from '../img/kafka.png'
-import Couchbase from '../img/couchbase.png'
 import PostgreSql from '../img/postgresql.png'
-import mysql from '../img/sql.png'
 import firebase from '../img/firebase.png'
-import AndroidSDK from '../img/android sdk.png';
-import AWS from '../img/aws.png';
-import Azure from '../img/azure.png';
-import Bitbucket from '../img/bitbucket.png';
-import CSharp from '../img/csharp.png';
-import C from '../img/c.png';
-import Deepstream from '../img/nvidia deepstream.png';
-import Docker from '../img/docker.png';
-import Expo from '../img/expo.png';
-import Flask from '../img/flask.png';
-import Golang from '../img/golang.png';
-import Java from '../img/java.png';
-import Kotlin from '../img/kotlin.png';
-import Lua from '../img/lua.png';
-import Postman from '../img/postman.png';
-import Python from '../img/python.png';
-import ReactNative from '../img/react-native.png';
-import RPGMaker from '../img/rpgmaker.png';
-import SoapUI from '../img/soapui.png';
-import TypeScript from '../img/typescript.png';
-import Unity from '../img/unity.png';
-import VMware from '../img/vmware.png';
-import Wix from '../img/wix.png';
-import WordPress from '../img/wordpress.png';
-import js3 from '../img/3js.png';
+import Docker from '../img/docker.png'
+import Expo from '../img/expo.png'
+import Flask from '../img/flask.png'
+import Postman from '../img/postman.png'
+import Python from '../img/python.png'
+import ReactNative from '../img/react-native.png'
+import SoapUI from '../img/soapui.png'
+import js3 from '../img/3js.png'
 import redvox1 from '../img/redvox1.gif'
 import redvox2 from '../img/redvox2.gif'
 import redvox3 from '../img/redvox3.gif'
-import redvoxBack from '../img/redvoxback.png'
-
 import cloud1 from '../img/1.gif'
 import cloud2 from '../img/2.gif'
 import cloud3 from '../img/3.gif'
 import vine1 from '../img/vine1.gif'
 import vine2 from '../img/vine2.gif'
 import vine3 from '../img/vine3.gif'
-import vineback from '../img/vineback.png'
 import word1 from '../img/word1.gif'
 import word2 from '../img/word2.gif'
 import word3 from '../img/word3.gif'
-import wordback from '../img/wordback.png'
 import rick1 from '../img/rick1.gif'
 import rick2 from '../img/rick2.gif'
 import rick3 from '../img/rick3.gif'
@@ -67,97 +34,8 @@ import rick3 from '../img/rick3.gif'
 
 import farm1 from '../img/farm.gif'
 import farm2 from '../img/farm2.gif'
-import farmback from '../img/farmback.png'
-import rickback from '../img/rickback.png'
-import cloudBack from '../img/cloudBack.png'
-import { useState, useEffect, useRef } from "react"
-import { createRoot } from 'react-dom/client';  // Corrected import statement
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Scene } from "three";
-
-const Item = ({ path }) => {
-    const [animationFrame, setAnimationFrame] = useState(0);
-    const ref = useRef();
-    let paths = [...path]
-    const useNum = useRef(-1);
-    const [rotationDirection, setRotationDirection] = useState(-1); // 1 for clockwise, -1 for counterclockwise
-    const [models, setModels] = useState([]); // State to store loaded models
-
-    const rotateObjects = () => {
-        if (ref.current && models.length > 0) {
-            const clockwiseLimit = 0.1; // Replace with the desired clockwise rotation limit in degrees
-            const counterclockwiseLimit = -0.1; // Replace with the desired counterclockwise rotation limit in degrees
-            let rotationIncrement = 0.00005 * useNum.current;
-            models.forEach((model) => {
-                let currentRotation = model.rotation.z;
-                currentRotation -= rotationIncrement;
-                model.rotation.z = currentRotation;
-
-                if (
-                    (useNum.current === -1 && currentRotation >= clockwiseLimit) ||
-                    (useNum.current === 1 && currentRotation <= counterclockwiseLimit)
-                ) {
-                    useNum.current *= -1;
 
 
-                }
-            });
-
-            // Ensure that the rotation is continuous
-            setAnimationFrame(requestAnimationFrame(rotateObjects));
-        }
-    };
-
-    useEffect(() => {
-        // Load each model in the paths array
-        const loadModels = async () => {
-            const loadedModels = [];
-
-            for (const path of paths) {
-                const model = await new Promise((resolve, reject) => {
-                    new GLTFLoader().load(path, resolve, undefined, reject);
-                });
-                loadedModels.push(model.scene.clone());
-            }
-            setModels(loadedModels);
-        };
-
-        loadModels();
-
-        // Cleanup function to cancel animation frame on component unmount
-        return () => cancelAnimationFrame(animationFrame);
-    }, []);
-
-    useEffect(() => {
-        // Adjust properties of each loaded model
-        if (models.length > 0) {
-            models.forEach((model, index) => {
-                if (index === 1) {
-                    model.position.set(-1, -1, -0.5); // Adjust as needed
-                    model.rotation.set(0.4, 0, 0); // Adjust as needed
-                    model.scale.set(1, 1, 1);
-                    ref.current.add(model);
-                }
-                else {
-                    model.position.set(3, 0, -2.6); // Adjust as needed
-                    model.rotation.set(1.7, 0, 0); // Adjust as needed
-                    model.scale.set(1, 1, 1);
-                    ref.current.add(model);
-                }
-            });
-
-            // Adjust camera position to zoom in
-            const zoomFactor = -3; // Experiment with different values for desired zoom
-            ref.current.position.z -= zoomFactor;
-
-            // Initiate rotation animation
-            setAnimationFrame(requestAnimationFrame(rotateObjects));
-        }
-    }, [models]);
-
-    return <group ref={ref} />;
-};
 const Projects = () => {
     const myProjects =
         [
@@ -257,7 +135,7 @@ const Projects = () => {
                                 <div className='flex lg:justify-normal justify-center flex-row'>
                                     {item.techImages.map((image, index) => (
                                         <div className='w-32' key={index} style={{ animationDelay: `${index * 0.4 + 1}s` }}>
-                                            <img src={image} style={{ animation: `bounce ${index * 0.4 + 1}s infinite` }} />
+                                            <img src={image} alt={index} style={{ animation: `bounce ${index * 0.4 + 1}s infinite` }} />
                                         </div>
                                     ))}
                                 </div>

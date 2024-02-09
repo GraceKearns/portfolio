@@ -19,30 +19,30 @@ import Couchbase from '../img/couchbase.png'
 import PostgreSql from '../img/postgresql.png'
 import mysql from '../img/sql.png'
 import firebase from '../img/firebase.png'
-import AndroidSDK from '../img/android sdk.png';
-import AWS from '../img/aws.png';
-import Azure from '../img/azure.png';
-import Bitbucket from '../img/bitbucket.png';
-import CSharp from '../img/csharp.png';
-import C from '../img/c.png';
-import Deepstream from '../img/nvidia deepstream.png';
-import Docker from '../img/docker.png';
-import Expo from '../img/expo.png';
-import Flask from '../img/flask.png';
-import Golang from '../img/golang.png';
-import Java from '../img/java.png';
-import Kotlin from '../img/kotlin.png';
-import Lua from '../img/lua.png';
-import Postman from '../img/postman.png';
-import Python from '../img/python.png';
-import ReactNative from '../img/react-native.png';
-import RPGMaker from '../img/rpgmaker.png';
-import SoapUI from '../img/soapui.png';
-import TypeScript from '../img/typescript.png';
-import Unity from '../img/unity.png';
-import VMware from '../img/vmware.png';
-import Wix from '../img/wix.png';
-import WordPress from '../img/wordpress.png';
+import AndroidSDK from '../img/android sdk.png'
+import AWS from '../img/aws.png'
+import Azure from '../img/azure.png'
+import Bitbucket from '../img/bitbucket.png'
+import CSharp from '../img/csharp.png'
+import C from '../img/c.png'
+import Deepstream from '../img/nvidia deepstream.png'
+import Docker from '../img/docker.png'
+import Expo from '../img/expo.png'
+import Flask from '../img/flask.png'
+import Golang from '../img/golang.png'
+import Java from '../img/java.png'
+import Kotlin from '../img/kotlin.png'
+import Lua from '../img/lua.png'
+import Postman from '../img/postman.png'
+import Python from '../img/python.png'
+import ReactNative from '../img/react-native.png'
+import RPGMaker from '../img/rpgmaker.png'
+import SoapUI from '../img/soapui.png'
+import TypeScript from '../img/typescript.png'
+import Unity from '../img/unity.png'
+import VMware from '../img/vmware.png'
+import Wix from '../img/wix.png'
+import WordPress from '../img/wordpress.png'
 import { useState, useEffect, useRef } from "react"
 const Skills = () => {
     const Items = {
@@ -288,6 +288,7 @@ const Skills = () => {
 
         return () => {
             if (skillsRef.current) {
+                // eslint-disable-next-line react-hooks/exhaustive-deps
                 observer.unobserve(skillsRef.current);
             }
         };
